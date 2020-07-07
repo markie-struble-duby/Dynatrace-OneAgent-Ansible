@@ -13,5 +13,4 @@
 
 - name: restart oneagent
   command: "{{ dynatrace_oneagent_command_line_tool }} --restart-service"
-  #args:
-  #  creates: "{{ dynatrace_oneagent_install_artifact }}"
+  

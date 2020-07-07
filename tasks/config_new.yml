@@ -25,3 +25,4 @@
     command: "{{ dynatrace_oneagent_command_line_tool }} {{ dynatrace_oneagent_hostname }}"
     when: dynatrace_oneagent_hostname
     notify: restart oneagent
+    
