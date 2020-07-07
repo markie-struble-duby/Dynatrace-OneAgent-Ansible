@@ -42,7 +42,9 @@ The following variables are available in `defaults/main/` and can be overriden:
 | `dynatrace_paas_token` | `""` | The API Token retrieved from the "Deploy Dynatrace" installer page
 | `dynatrace_oneagent_version` | `"latest"` | The required version of the OneAgent in 1.155.275.20181112-084458 format
 | `dynatrace_oneagent_download_dir` | `Linux: /tmp/ Windows: C:\Windows\Temp\` | Dynatrace OneAgent installer file download directory
-| `dynatrace_oneagent_install_args` | `APP_LOG_CONTENT_ACCESS=1 INFRA_ONLY=0` | Dynatrace OneAgent install parameters defined as a list of items
+| `dynatrace_use_oneagentctl` | `yes` | Specifies the use of the oneagentctl (and --set-params method) for install params and host metadata configurations
+  `dynatrace_oneagent_install_args` | `APP_LOG_CONTENT_ACCESS=1 INFRA_ONLY=0` | Dynatrace OneAgent install parameters defined as a list of items
+| `dynatrace_oneagent_install_args_new` | `set-app-log-content-access=true set-infra-only=false` | Dynatrace OneAgent install parameters defined as a list of items, used for --set-param method
 | `dynatrace_oneagent_host_tags` | `""` | Values to automatically add tags to a host, should contain a list of strings or key/value pairs. Spaces are used to separate tag values.
 | `dynatrace_oneagent_host_metadata` | `""` | Values to automatically add metadata to a host, should contain a list of strings or key/value pairs. Spaces are used to separate metadata values.
 | `dynatrace_oneagent_hostname` | `""` | Overrides an automatically detected host name.

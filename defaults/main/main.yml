@@ -6,10 +6,22 @@ dynatrace_paas_token: ""
 # Set the OneAgent version to download
 dynatrace_oneagent_version: latest
 
+# Note if you require flags not yet available with the --set-param method
+ # on install (e.g. INSTALL_PATH) set to 'no'
+dynatrace_use_oneagentctl: yes
+
 # Default flags passed to installer
+ # Ignored if dynatrace_use_oneagentctl = yes
 dynatrace_oneagent_install_args: 
   APP_LOG_CONTENT_ACCESS: 1
   INFRA_ONLY: 0
+
+# Default flags passed to installer to be used with --set-param method
+ # Ignored if dynatrace_use_oneagentctl = no
+dynatrace_oneagent_install_args_new:
+  set-app-log-content-access: true
+  set-infra-only: false
+  set-host-group: ""
 
 # Set metadata
 dynatrace_oneagent_host_tags: ""

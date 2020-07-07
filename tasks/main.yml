@@ -16,8 +16,13 @@
 - name: install dynatrace oneagent
   include_tasks: "tasks/install.yml"
 
+- name: config dynatrace oneagent with oneagentctl
+  include_tasks: "tasks/config_new.yml"
+  when: dynatrace_use_oneagentctl
+
 - name: config dynatrace oneagent
   include_tasks: "tasks/config.yml"
+  when: not dynatrace_use_oneagentctl
 
 - name: ensure oneagent has selected state and enabled on boot | linux
   service:

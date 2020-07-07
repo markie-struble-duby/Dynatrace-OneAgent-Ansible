@@ -1,0 +1,27 @@
+---
+  - name: set host tag params - oneagentctl method
+    set_fact:
+      host_tag_params: "--set-host-tag={{ item }}"
+    with_items: "{{ dynatrace_oneagent_host_tags.split(' ') }}"
+    register: host_tag_params
+
+  - name: set host custom properties params - oneagentctl method
+    set_fact:
+      host_prop_params: "--set-host-property={{ item }}"
+    with_items: "{{ dynatrace_oneagent_host_metadata.split(' ') }}"
+    register: host_prop_params
+
+  - name: create/update host autotags
+    command: "{{ dynatrace_oneagent_command_line_tool }} {{ host_tag_params.results | map(attribute='ansible_facts.host_tag_params') | join(' ') }}"
+    when: dynatrace_oneagent_host_tags
+    notify: restart oneagent
+
+  - name: create/update host custom properties
+    command: "{{ dynatrace_oneagent_command_line_tool }} {{ host_prop_params.results | map(attribute='ansible_facts.host_prop_params') | join(' ') }}"
+    when: dynatrace_oneagent_host_metadata
+    notify: restart oneagent
+
+  - name: create custom host name
+    command: "{{ dynatrace_oneagent_command_line_tool }} {{ dynatrace_oneagent_hostname }}"
+    when: dynatrace_oneagent_hostname
+    notify: restart oneagent

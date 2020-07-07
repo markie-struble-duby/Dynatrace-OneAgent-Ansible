@@ -11,3 +11,4 @@ dynatrace_oneagent_service_name: Dynatrace OneAgent
 dynatrace_oneagent_hostautotag_config_file: "{{ ansible_env.ProgramData }}\\dynatrace\\oneagent\\agent\\config\\hostautotag.conf"
 dynatrace_oneagent_hostmetadata_config_file: "{{ ansible_env.ProgramData }}\\dynatrace\\oneagent\\agent\\config\\hostcustomproperties.conf"
 dynatrace_oneagent_hostname_config_file: "{{ ansible_env.ProgramData }}\\dynatrace\\oneagent\\agent\\config\\hostname.conf"
+dynatrace_oneagent_command_line_tool: "{{ dynatrace_oneagent_install_dir }}\\agent\\tools\\oneagentctl"

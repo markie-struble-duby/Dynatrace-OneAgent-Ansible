@@ -10,3 +10,8 @@
     name: "{{ dynatrace_oneagent_service_name }}"
     state: "{{ dynatrace_oneagent_restart_state }}"
   when: ansible_system|lower == "win32nt"
+
+- name: restart oneagent
+  command: "{{ dynatrace_oneagent_command_line_tool }} --restart-service"
+  #args:
+  #  creates: "{{ dynatrace_oneagent_install_artifact }}"
